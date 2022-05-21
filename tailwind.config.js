@@ -9,8 +9,8 @@ module.exports = {
     themes: [
       {
         storeforpc: {
-          primary: "#0FCFEC",
-          secondary: "#19D3AE",
+          primary: "#4681f4",
+          secondary: "#5adbb5",
           accent: "#3A4256",
           neutral: "#3d4451",
           "base-100": "#ffffff",
