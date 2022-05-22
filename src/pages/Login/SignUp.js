@@ -14,7 +14,7 @@ const SignUp = () => {
         userWithEmail,
         loadingWithEmail,
         errorWithEmail,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth,{ sendEmailVerification: true });
       const [updateProfile, updating] = useUpdateProfile(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = async data => {
@@ -35,7 +35,7 @@ const SignUp = () => {
         return <Loading/>
     }
     return (
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title">Sign Up</h2>

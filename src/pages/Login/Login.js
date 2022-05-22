@@ -36,7 +36,7 @@ const Login = () => {
         return <Loading/>
     }
     return (
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center h-screen'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title text-primary">Login</h2>
@@ -99,6 +99,13 @@ const Login = () => {
                                 {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                                 {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             </label>
+                        </div>
+                        <div className='flex justify-between items-center'>
+                            <div>
+                                <input className='my-5' type="checkbox" name="remember" />
+                                <label className='ml-2' for="remember">Remember me</label>
+                            </div>
+                            <h2 className='my-3'><Link className='text-blue-600 hover:underline' to='/forgotPassword'>Forgot password?</Link></h2>
                         </div>
 
                         <input className='btn btn-primary text-white w-full' type="submit" value="Login" />
