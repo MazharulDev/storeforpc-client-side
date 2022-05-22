@@ -1,12 +1,40 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import Loading from '../../shared/Loading/Loading';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+    const navigate=useNavigate()
+    const [
+        signInWithEmailAndPassword,
+        userWithEmail,
+        loadingWithEmail,
+        errorWithEmail,
+      ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithGoogle, userWithGoogle, loadingWithGoogle, errorWithGoogle] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
-       console.log(data);
+       signInWithEmailAndPassword(data.email,data.password)
     };
+    const handleGoogleSignIn=()=>{
+        signInWithGoogle()
+    }
+    if(userWithEmail|| userWithGoogle){
+        toast('Login successfully')
+        navigate('/')
+    }
+    if(errorWithGoogle){
+        toast.error(errorWithGoogle?.message)
+    }
+    if(errorWithEmail){
+        toast.error(errorWithEmail?.message)
+    }
+    if(loadingWithEmail||loadingWithGoogle){
+        return <Loading/>
+    }
     return (
         <div className='flex justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -77,7 +105,7 @@ const Login = () => {
                     </form>
                     <p><small>New to StoreForPc ?  <Link className='text-blue-500 hover:underline' to="/signup">Create New Account</Link></small></p>
                     <div className="divider">OR</div>
-                    <button className='btn btn-outline btn-secondary hover:text-white w-full'>Sign In with Google</button>
+                    <button onClick={handleGoogleSignIn} className='btn btn-outline btn-secondary hover:text-white w-full'>Sign In with Google</button>
 
                 </div>
             </div>

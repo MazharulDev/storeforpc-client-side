@@ -1,7 +1,16 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
+    const handleSignOut=()=>{
+        signOut(auth)
+        toast('Sign Out')
+    }
     const items = <>
         <li><Link to='/'>Home</Link></li>
         {
@@ -9,7 +18,7 @@ const Navbar = () => {
         }
         <li><Link to='/appointment'>Blogs</Link></li>
         <li><Link to='/contactus'>Contact Us</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {user?<li><button onClick={handleSignOut}>Sign out</button></li>: <li><Link to='/login'>Login</Link></li>}
 
 
     </>
