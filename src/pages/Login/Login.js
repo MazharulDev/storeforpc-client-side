@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../../shared/Loading/Loading';
 import { toast } from 'react-toastify';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
     const navigate=useNavigate()
@@ -22,13 +23,14 @@ const Login = () => {
     const handleGoogleSignIn=()=>{
         signInWithGoogle()
     }
+    const [userToken]=useToken(userWithEmail||userWithGoogle)
     const location = useLocation();
     let from = location.state?.from?.pathname || '/';
-    if (userWithEmail||userWithGoogle) {
-        setTimeout(() => {
+    useEffect(() => {
+        if (userToken) {
             navigate(from, { replace: true });
-        }, 1000);
-    }
+        }
+    }, [navigate,userToken,from])
     if(errorWithGoogle){
         toast.error(errorWithGoogle?.message)
     }

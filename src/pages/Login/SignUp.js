@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../../shared/Loading/Loading';
 
 const SignUp = () => {
@@ -25,9 +26,14 @@ const SignUp = () => {
         await createUserWithEmailAndPassword(data.email,data.password)
         await updateProfile({displayName:data.name})
     };
-    if(userWithEmail){
-        navigate('/')
-    }
+    const [userToken]=useToken(userWithEmail)
+    const location = useLocation();
+    let from = location.state?.from?.pathname || '/';
+    useEffect(() => {
+        if (userToken) {
+            navigate(from, { replace: true });
+        }
+    }, [navigate,userToken,from])
     if(errorWithEmail){
         toast.error(errorWithEmail?.message)
     }

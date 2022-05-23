@@ -1,17 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import Loading from '../../shared/Loading/Loading';
 
 const MyOrder = () => {
     const [user, loading] = useAuthState(auth);
-    const [orders, setOrders] = useState([]);
-    useEffect(() => {
-        if (user) {
-            fetch(`http://localhost:5000/purchase?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => setOrders(data))
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/purchase?email=${user.email}`, {
+        method: 'GET',
+        headers:{
+            'authorization':`Bearer ${localStorage.getItem('accessToken')}`
         }
-    }, [user])
+    })
+        .then(res => res.json()))
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure you want to cancel Order?')
+        if (proceed) {
+            const url = `http://localhost:5000/purchase/${id}`
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    refetch()
+                    toast.success('Order canceled successfully')
+                })
+        }
+    }
+    if (loading || isLoading) {
+        return <Loading />
+    }
     return (
         <div>
             <h2>My Order</h2>
@@ -25,18 +44,20 @@ const MyOrder = () => {
                             <th>Order Quantity</th>
                             <th>Total Price</th>
                             <th>Order Cancel</th>
+                            <th>Payment Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            orders.map((order,index) =>
+                            orders.map((order, index) =>
                                 <tr key={index}>
-                                    <th>{index+1}</th>
+                                    <th>{index + 1}</th>
                                     <td>{order.name}</td>
                                     <td>{order.address}</td>
                                     <td>{order.quantity}</td>
                                     <td>${order.price}</td>
-                                    <td><button class="btn btn-xs btn-error">Cancel</button></td>
+                                    <td><button onClick={() => handleDelete(order._id)} class="btn btn-xs btn-error">Cancel</button></td>
+                                    <td><button class="btn btn-xs">Pay</button></td>
                                 </tr>
 
                             )
