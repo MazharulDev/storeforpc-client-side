@@ -20,7 +20,7 @@ const Purchase = () => {
     }
     const handleSubmit=e=>{
         e.preventDefault();
-        const name=user.displayName;
+        const UserName=user.displayName;
         const email=user.email;
         const address=e.target.address.value;
         const phone=e.target.phone.value;
@@ -30,7 +30,8 @@ const Purchase = () => {
         }
         const totalPrice=price*quantity;
         const purchase={
-            name:name,
+            UserName:UserName,
+            name,
             email:email,
             address:address,
             phone:phone,
