@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../shared/Loading/Loading';
@@ -9,8 +10,8 @@ const MyOrder = () => {
     const [user, loading] = useAuthState(auth);
     const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/purchase?email=${user.email}`, {
         method: 'GET',
-        headers:{
-            'authorization':`Bearer ${localStorage.getItem('accessToken')}`
+        headers: {
+            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
         }
     })
         .then(res => res.json()))
@@ -57,7 +58,10 @@ const MyOrder = () => {
                                     <td>{order.quantity}</td>
                                     <td>${order.price}</td>
                                     <td><button onClick={() => handleDelete(order._id)} class="btn btn-xs btn-error">Cancel</button></td>
-                                    <td><button class="btn btn-xs">Pay</button></td>
+                                    <td>
+                                        {!order.paid && <Link to={`/dashboard/payment/${order._id}`}><button class="btn btn-xs btn-success">Pay</button></Link>}
+                                        {order.paid && <button disabled class="btn btn-xs btn-success">Paid</button>}
+                                    </td>
                                 </tr>
 
                             )

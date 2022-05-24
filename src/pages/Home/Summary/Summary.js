@@ -1,9 +1,8 @@
 import React from 'react';
-import CountUp from "react-countup";
-import {BiWorld} from 'react-icons/bi'
-import {CgWebsite} from 'react-icons/cg'
-import {IoIosPeople} from 'react-icons/io'
-import {VscFeedback} from 'react-icons/vsc'
+import { BsGraphUp } from 'react-icons/bs'
+import { BiTask } from 'react-icons/bi'
+import { IoIosPeople } from 'react-icons/io'
+import { FiShoppingCart } from 'react-icons/fi'
 
 const Summary = () => {
     return (
@@ -14,49 +13,29 @@ const Summary = () => {
                 <div className='md:h-72 flex items-center count-bg mb-5'>
                     <div className='md:grid grid-cols-4 gap-28 w-fit mx-auto'>
                         <div className='text-center'>
-                        <BiWorld className='text-7xl mx-auto mb-3'></BiWorld>
-                            <CountUp end={47} redraw={true}>
-                                {({ countUpRef }) => (
-                                    
-                                    <span className='text-5xl font-bold' ref={countUpRef} />
-
-                                )}
-                            </CountUp>
-                            <h2 className='text-2xl uppercase mt-4'>Counties</h2>
+                            <IoIosPeople className='text-7xl mx-auto mb-3'></IoIosPeople>
+                            <span className='text-5xl font-bold'>100+</span>
+                            <h2 className='text-2xl uppercase mt-4'>Customers</h2>
                         </div>
                         <div className='text-center'>
-                            <CgWebsite className='text-7xl mx-auto mb-3'></CgWebsite>
-                            <CountUp end={627} redraw={true}>
-                                {({ countUpRef }) => (
-
-                                    <span className='text-5xl font-bold' ref={countUpRef} />
-
-                                )}
-                            </CountUp>
-                            <h2 className='text-2xl uppercase mt-4'>Complete Projects</h2>
+                            <BsGraphUp className='text-7xl mx-auto mb-3'></BsGraphUp>
+                            <span className='text-5xl font-bold'>100M+</span>
+                            <h2 className='text-2xl uppercase mt-4'>Annual revenue</h2>
                         </div>
                         <div className='text-center'>
-                        <IoIosPeople className='text-7xl mx-auto mb-3'></IoIosPeople>
-                            <CountUp end={125} redraw={true}>
-                                {({ countUpRef }) => (
-
-                                    <span className='text-5xl font-bold' ref={countUpRef} />
-
-                                )}
-                            </CountUp>
-                            <h2 className='text-2xl uppercase mt-4'>Happy clients</h2>
+                            <BiTask className='text-7xl mx-auto mb-3'></BiTask>
+                            <span className='text-5xl font-bold'>55K+</span>
+                            <h2 className='text-2xl uppercase mt-4'>Reviews</h2>
                         </div>
                         <div className='text-center'>
-                            <VscFeedback className='text-7xl mx-auto mb-3'></VscFeedback>
-                            <CountUp end={356} redraw={true}>
-                                {({ countUpRef }) => (
-
-                                    <span className='text-5xl font-bold' ref={countUpRef} />
+                            <FiShoppingCart className='text-7xl mx-auto mb-3'></FiShoppingCart>
 
 
-                                )}
-                            </CountUp>
-                            <h2 className='text-2xl uppercase mt-4'>Feedbacks</h2>
+                            <span className='text-5xl font-bold'>20K+ </span>
+
+
+
+                            <h2 className='text-2xl uppercase mt-4'>Product</h2>
                         </div>
                     </div>
                 </div>
