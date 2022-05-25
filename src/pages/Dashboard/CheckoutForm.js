@@ -63,7 +63,6 @@ const CheckoutForm = ({ paymentProcess }) => {
         } else {
             setCardError('');
             setTransactionId(paymentIntent.id)
-            console.log(paymentIntent);
             setSuccess('Your Payment is completed')
             const paymentStore = {
                 purchase: _id,
@@ -104,7 +103,7 @@ const CheckoutForm = ({ paymentProcess }) => {
                         },
                     }}
                 />
-                <button className='btn btn-xs mt-4 btn-success' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn btn-xs mt-4 btn-success' type="submit" disabled={!stripe || !clientSecret || success}>
                     Pay
                 </button>
             </form>

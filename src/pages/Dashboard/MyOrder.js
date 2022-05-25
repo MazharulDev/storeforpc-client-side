@@ -62,7 +62,21 @@ const MyOrder = () => {
                                         {!order.paid && <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-xs btn-success">Pay</button></Link>}
                                         {order.paid && <>
                                             <button disabled className="btn btn-xs btn-success">Paid</button><br />
-                                            <p className="btn btn-xs btn-success">Transaction Id: {order.transactionId}</p>
+                                            <label htmlFor="transId" className="btn btn-xs btn-success">TransactionId</label>
+
+
+
+
+                                            <input type="checkbox" id="transId" className="modal-toggle" />
+                                            <div className="modal">
+                                                <div className="modal-box">
+                                                    <label htmlFor="transId" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                                    {order.transactionId}
+
+                                                </div>
+                                            </div>
+
+
                                         </>}
                                     </td>
                                 </tr>
@@ -74,7 +88,7 @@ const MyOrder = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div >
     );
 };
 

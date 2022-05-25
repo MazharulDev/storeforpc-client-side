@@ -48,29 +48,29 @@ const MyPortfolio = () => {
                     </div>
                 </div>
 
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <div class="card-body">
-                        <h2 class="card-title">Skill</h2>
+                <div className="card w-96 bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <h2 className="card-title">Skill</h2>
                         <h2>HTML</h2>
-                        <progress class="progress progress-primary w-56" value="85" max="100"></progress>
+                        <progress className="progress progress-primary w-56" value="85" max="100"></progress>
                         <h2>CSS</h2>
-                        <progress class="progress progress-primary w-56" value="90" max="100"></progress>
+                        <progress className="progress progress-primary w-56" value="90" max="100"></progress>
                         <h2>Javascript</h2>
-                        <progress class="progress progress-primary w-56" value="80" max="100"></progress>
+                        <progress className="progress progress-primary w-56" value="80" max="100"></progress>
                         <h2>REACT</h2>
-                        <progress class="progress progress-primary w-56" value="78" max="100"></progress>
+                        <progress className="progress progress-primary w-56" value="78" max="100"></progress>
                         <h2>Tailwind</h2>
-                        <progress class="progress progress-primary w-56" value="90" max="100"></progress>
+                        <progress className="progress progress-primary w-56" value="90" max="100"></progress>
                         <h2>Bootstrap</h2>
-                        <progress class="progress progress-primary w-56" value="85" max="100"></progress>
+                        <progress className="progress progress-primary w-56" value="85" max="100"></progress>
                         <h2>MongoDB</h2>
-                        <progress class="progress progress-primary w-56" value="55" max="100"></progress>
+                        <progress className="progress progress-primary w-56" value="55" max="100"></progress>
                     </div>
                 </div>
 
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <div class="card-body">
-                        <h2 class="card-title">My Project</h2>
+                <div className="card w-96 bg-base-100 shadow-xl">
+                    <div className="card-body">
+                        <h2 className="card-title">My Project</h2>
                         <a className='link link-accent' href="https://vehicle-storehouse.web.app/">Vehicle Store House</a>
                         <a className='link link-accent' href="https://assignment-ten.netlify.app/">Health is Happiness</a>
                         <a className='link link-accent' href="https://assignment-nine.netlify.app/">Simple Laptop Shop</a>

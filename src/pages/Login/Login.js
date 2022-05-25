@@ -8,37 +8,37 @@ import { toast } from 'react-toastify';
 import useToken from '../../hooks/useToken';
 
 const Login = () => {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const [
         signInWithEmailAndPassword,
         userWithEmail,
         loadingWithEmail,
         errorWithEmail,
-      ] = useSignInWithEmailAndPassword(auth);
+    ] = useSignInWithEmailAndPassword(auth);
     const [signInWithGoogle, userWithGoogle, loadingWithGoogle, errorWithGoogle] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = data => {
-       signInWithEmailAndPassword(data.email,data.password)
+        signInWithEmailAndPassword(data.email, data.password)
     };
-    const handleGoogleSignIn=()=>{
+    const handleGoogleSignIn = () => {
         signInWithGoogle()
     }
-    const [userToken]=useToken(userWithEmail||userWithGoogle)
+    const [userToken] = useToken(userWithEmail || userWithGoogle)
     const location = useLocation();
     let from = location.state?.from?.pathname || '/';
     useEffect(() => {
         if (userToken) {
             navigate(from, { replace: true });
         }
-    }, [navigate,userToken,from])
-    if(errorWithGoogle){
+    }, [navigate, userToken, from])
+    if (errorWithGoogle) {
         toast.error(errorWithGoogle?.message)
     }
-    if(errorWithEmail){
+    if (errorWithEmail) {
         toast.error(errorWithEmail?.message)
     }
-    if(loadingWithEmail||loadingWithGoogle){
-        return <Loading/>
+    if (loadingWithEmail || loadingWithGoogle) {
+        return <Loading />
     }
     return (
         <div className='flex justify-center items-center h-screen'>
@@ -108,7 +108,7 @@ const Login = () => {
                         <div className='flex justify-between items-center'>
                             <div>
                                 <input className='my-5' type="checkbox" name="remember" />
-                                <label className='ml-2' for="remember">Remember me</label>
+                                <label className='ml-2' htmlFor="remember">Remember me</label>
                             </div>
                             <h2 className='my-3'><Link className='text-blue-600 hover:underline' to='/forgotPassword'>Forgot password?</Link></h2>
                         </div>

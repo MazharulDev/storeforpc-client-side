@@ -14,15 +14,15 @@ const Dashboard = () => {
             <div className="drawer drawer-mobile bg-slate-200">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex justify-center">
-                    {/* <!-- Page content here --> */}
+
                     <Outlet />
 
 
                 </div>
                 <div className="drawer-side">
-                    <label for="my-drawer-2" className="drawer-overlay"></label>
+                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 overflow-y-auto w-64 bg-base-100 text-base-content">
-                        {/* <!-- Sidebar content here --> */}
+
                         <li><Link to='/dashboard'>My Profile</Link></li>
                         {!admin && <li><Link to='/dashboard/myOrder'>My Orders</Link></li>}
                         {!admin && <li><Link to='/dashboard/myReview'>Add a Review</Link></li>}
