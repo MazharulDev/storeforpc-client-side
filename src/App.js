@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Blogs from './pages/Blogs';
 import AddProduct from './pages/Dashboard/AddProduct';
 import AllUser from './pages/Dashboard/AllUser';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -16,6 +17,8 @@ import AllReviews from './pages/Home/ReviewSection./AllReviews';
 import ForgotPassword from './pages/Login/ForgotPassword';
 import Login from './pages/Login/Login';
 import SignUp from './pages/Login/SignUp';
+import MyPortfolio from './pages/MyPortfolio/MyPortfolio';
+import NotFound from './pages/NotFound/NotFound';
 import RequireAdmin from './shared/RequireAdmin';
 import RequireAuth from './shared/RequireAuth';
 
@@ -45,6 +48,11 @@ function App() {
         <Route path='forgotpassword' element={<ForgotPassword />}></Route>
         <Route path='purchase/:id' element={<RequireAuth><Purchase /></RequireAuth>}></Route>
         <Route path='allreviews' element={<AllReviews />}></Route>
+        <Route path='/myportfolio' element={<MyPortfolio />}></Route>
+        <Route path='/blogs' element={<Blogs />}></Route>
+
+
+        <Route path='*' element={<NotFound />}></Route>
       </Routes>
     </div>
   );

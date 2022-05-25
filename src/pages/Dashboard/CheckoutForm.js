@@ -7,7 +7,8 @@ const CheckoutForm = ({ paymentProcess }) => {
     const [cardError, setCardError] = useState('')
     const [clientSecret, setClientSecret] = useState('');
     const [success, setSuccess] = useState('')
-    const { UserName, email, price } = paymentProcess;
+    const [transactionId, setTransactionId] = useState('')
+    const { _id, UserName, email, price } = paymentProcess;
     useEffect(() => {
         fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
@@ -26,7 +27,8 @@ const CheckoutForm = ({ paymentProcess }) => {
     }, [price])
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!stripe || elements) {
+
+        if (!stripe || !elements) {
             return;
         }
         const card = elements.getElement(CardElement);
@@ -56,11 +58,31 @@ const CheckoutForm = ({ paymentProcess }) => {
         );
         if (intentError) {
             setCardError(intentError?.message);
+            console.log('error', intentError);
 
         } else {
             setCardError('');
+            setTransactionId(paymentIntent.id)
             console.log(paymentIntent);
             setSuccess('Your Payment is completed')
+            const paymentStore = {
+                purchase: _id,
+                transactionId: paymentIntent.id,
+            }
+
+            //update pain information
+            fetch(`http://localhost:5000/purchase/${_id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(paymentStore)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                })
         }
     }
     return (
@@ -90,7 +112,10 @@ const CheckoutForm = ({ paymentProcess }) => {
                 cardError && <p className='text-red-600'>{cardError}</p>
             }
             {
-                success && <p className='text-green-600'>{success}</p>
+                success && <div className='text-green-600'>
+                    <p>{success}</p>
+                    <p>Your transaction id: <span className='text-green-500'> {transactionId}</span> </p>
+                </div>
             }
         </div>
     );

@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import Loading from '../../../shared/Loading/Loading';
 
 const Navbar = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -17,12 +18,15 @@ const Navbar = () => {
         {
             user && <li><Link to="/dashboard">Dashboard</Link></li>
         }
-        <li><Link to='/appointment'>Blogs</Link></li>
-        <li><Link to='/contactus'>Contact Us</Link></li>
+        <li><Link to='/blogs'>Blogs</Link></li>
+        <li><Link to='/myportfolio'>My Portfolio</Link></li>
         {user ? <li><button onClick={handleSignOut}>Sign out</button></li> : <li><Link to='/login'>Login</Link></li>}
 
 
     </>
+    if (loading) {
+        return <Loading />
+    }
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
