@@ -13,6 +13,7 @@ import Payment from './pages/Dashboard/Payment';
 import Home from './pages/Home/Home';
 import Navbar from './pages/Home/Navbar/Navbar';
 import Purchase from './pages/Home/ProductsSection/Purchase';
+import ShowAllProduct from './pages/Home/ProductsSection/ShowAllProduct';
 import AllReviews from './pages/Home/ReviewSection./AllReviews';
 import ForgotPassword from './pages/Login/ForgotPassword';
 import Login from './pages/Login/Login';
@@ -50,6 +51,7 @@ function App() {
         <Route path='allreviews' element={<AllReviews />}></Route>
         <Route path='/myportfolio' element={<MyPortfolio />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
+        <Route path='/showallproduct' element={<ShowAllProduct />}></Route>
 
 
         <Route path='*' element={<NotFound />}></Route>

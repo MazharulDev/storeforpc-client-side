@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ProductSection from './ProductSection';
+import Footer from '../../../shared/Footer/Footer';
+import PerProduct from './PerProduct';
 
-const ProductsSection = () => {
+const ShowAllProduct = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/product', {
@@ -14,7 +15,6 @@ const ProductsSection = () => {
             .then(res => res.json())
             .then(data => setProducts(data));
     }, [])
-
     return (
         <div>
             <div className='flex justify-center'>
@@ -22,14 +22,12 @@ const ProductsSection = () => {
             </div>
             <div className='container mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 my-10'>
                 {
-                    products.slice(0, 6).map(product => <ProductSection key={product._id} product={product}></ProductSection>)
+                    products.map(product => <PerProduct key={product._id} product={product}></PerProduct>)
                 }
             </div>
-            <div className='flex justify-center mb-5'>
-                <Link to='/showallproduct' className="btn btn-outline btn-info">Show All Product</Link>
-            </div>
+            <Footer />
         </div>
     );
 };
 
-export default ProductsSection;
+export default ShowAllProduct;

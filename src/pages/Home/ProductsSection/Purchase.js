@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Loading from '../../../shared/Loading/Loading';
 import { toast } from 'react-toastify';
+import Footer from '../../../shared/Footer/Footer';
 
 const Purchase = () => {
     const [user, loading] = useAuthState(auth);
@@ -83,32 +84,35 @@ const Purchase = () => {
             })
     }
     return (
-        <div className='md:grid grid-flow-col px-12 mt-10'>
-            <div className='flex items-center gap-5 col-span-2 mx-auto'>
-                <div className='flex items-center'>
-                    <img width={100} src={img} alt="" />
-                </div>
-                <div>
-                    <h2 className='text-xl font-bold'>{name}</h2>
-                    <div className='flex justify-between gap-4'>
-                        <h3>Order quantity: {minOrder}</h3>
-                        <h3>Price : ${price}</h3>
+        <>
+            <div className='md:grid grid-flow-col px-12 my-10'>
+                <div className='flex items-center gap-5 col-span-2 mx-auto'>
+                    <div className='flex items-center'>
+                        <img width={100} src={img} alt="" />
                     </div>
-                    <h2>Available Quantity: {availableCount}</h2>
+                    <div>
+                        <h2 className='text-xl font-bold'>{name}</h2>
+                        <div className='flex justify-between gap-4'>
+                            <h3>Order quantity: {minOrder}</h3>
+                            <h3>Price : ${price}</h3>
+                        </div>
+                        <h2>Available Quantity: {availableCount}</h2>
+                    </div>
+                </div>
+                <div className='grid-span-1 mx-auto'>
+                    <h2 className='text-3xl'>Process purchase</h2>
+                    <form onSubmit={handleSubmit}>
+                        <input className='border rounded-md p-2 mt-5' disabled type="name" name="name" value={user?.displayName} /> <br />
+                        <input className='border rounded-md p-2 mt-5' disabled type="email" name="email" value={user?.email} /> <br />
+                        <textarea className='border rounded-md mt-5 px-6 py-4' type="text-area" name="address" placeholder='Type your address' required /><br />
+                        <input className='border rounded-md mt-5 p-2' type="number" name="phone" placeholder='Type your phone number' required /><br />
+                        <input className='mt-5 p-2 w-28 border mr-4 rounded-md' type="number" name="quantity" placeholder='Quantity' required />
+                        <input className='btn btn-primary btn-block mt-5' type='submit' value="purchase" />
+                    </form>
                 </div>
             </div>
-            <div className='grid-span-1 mx-auto'>
-                <h2 className='text-3xl'>Process purchase</h2>
-                <form onSubmit={handleSubmit}>
-                    <input className='border rounded-md p-2 mt-5' disabled type="name" name="name" value={user?.displayName} /> <br />
-                    <input className='border rounded-md p-2 mt-5' disabled type="email" name="email" value={user?.email} /> <br />
-                    <textarea className='border rounded-md mt-5 px-6 py-4' type="text-area" name="address" placeholder='Type your address' required /><br />
-                    <input className='border rounded-md mt-5 p-2' type="number" name="phone" placeholder='Type your phone number' required /><br />
-                    <input className='mt-5 p-2 w-28 border mr-4 rounded-md' type="number" name="quantity" placeholder='Quantity' required />
-                    <input className='btn btn-primary btn-block mt-5' type='submit' value="purchase" />
-                </form>
-            </div>
-        </div>
+            <Footer />
+        </>
     );
 };
 
