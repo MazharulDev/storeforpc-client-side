@@ -25,7 +25,7 @@ const Dashboard = () => {
                         {/* <!-- Sidebar content here --> */}
                         <li><Link to='/dashboard'>My Profile</Link></li>
                         {!admin && <li><Link to='/dashboard/myOrder'>My Orders</Link></li>}
-                        {!admin && <li><Link to='/dashboard/myReview'>My Review</Link></li>}
+                        {!admin && <li><Link to='/dashboard/myReview'>Add a Review</Link></li>}
                         {admin && <li><Link to='/dashboard/manageOrders'>Manage All Orders</Link></li>}
                         {admin && <li><Link to='/dashboard/addProduct'>Add a Product</Link></li>}
                         {admin && <li><Link to='/dashboard/user'>Make Admin</Link></li>}

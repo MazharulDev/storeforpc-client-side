@@ -12,6 +12,7 @@ import Payment from './pages/Dashboard/Payment';
 import Home from './pages/Home/Home';
 import Navbar from './pages/Home/Navbar/Navbar';
 import Purchase from './pages/Home/ProductsSection/Purchase';
+import AllReviews from './pages/Home/ReviewSection./AllReviews';
 import ForgotPassword from './pages/Login/ForgotPassword';
 import Login from './pages/Login/Login';
 import SignUp from './pages/Login/SignUp';
@@ -43,6 +44,7 @@ function App() {
         <Route path='/signup' element={<SignUp />}></Route>
         <Route path='forgotpassword' element={<ForgotPassword />}></Route>
         <Route path='purchase/:id' element={<RequireAuth><Purchase /></RequireAuth>}></Route>
+        <Route path='allreviews' element={<AllReviews />}></Route>
       </Routes>
     </div>
   );

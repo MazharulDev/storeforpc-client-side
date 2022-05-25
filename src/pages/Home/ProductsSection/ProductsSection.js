@@ -17,7 +17,7 @@ const ProductsSection = () => {
     return (
         <div className='container mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 my-10'>
             {
-                products.map(product => <ProductSection key={product._id} product={product}></ProductSection>)
+                products.slice(0, 6).map(product => <ProductSection key={product._id} product={product}></ProductSection>)
             }
         </div>
     );
