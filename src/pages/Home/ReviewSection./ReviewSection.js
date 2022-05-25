@@ -18,7 +18,7 @@ const ReviewSection = () => {
                 }
             </div>
             <div className='flex justify-center mb-5'>
-                <Link to='/allreviews' class="btn btn-outline btn-info">Show All Reviews</Link>
+                <Link to='/allreviews' className="btn btn-outline btn-info">Show All Reviews</Link>
             </div>
         </div>
     );

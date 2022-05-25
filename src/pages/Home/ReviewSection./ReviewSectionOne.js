@@ -8,8 +8,8 @@ const ReviewSectionOne = ({ reviewAll }) => {
         <div>
             <div className='border rounded-lg p-5 h-72'>
                 <div className='flex items-center gap-3'>
-                    <div class="avatar">
-                        <div class="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    <div className="avatar">
+                        <div className="w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             {photo ? <img src={photo} alt='' /> : <div className='text-3xl h-full text-white bg-primary flex justify-center items-center'>{user.substring(0, 1)}</div>}
                         </div>
                     </div>

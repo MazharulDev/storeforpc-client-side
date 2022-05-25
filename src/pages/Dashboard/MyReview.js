@@ -45,7 +45,7 @@ const MyReview = () => {
                     <label className="label">
                         <span className="label-text">Select Rating</span>
                     </label>
-                    <select {...register('rating')} class="select input-bordered select-xs w-full max-w-xs">
+                    <select {...register('rating')} className="select input-bordered select-xs w-full max-w-xs">
 
                         <option>1</option>)
                         <option>2</option>)

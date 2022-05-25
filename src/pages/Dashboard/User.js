@@ -28,8 +28,8 @@ const User = ({ user, index, handleDelete, refetch }) => {
         <tr>
             <th>{index + 1}</th>
             <td>{user.email}</td>
-            <td>{user.role !== 'admin' && <button onClick={handleMakeAdmin} class="btn btn-xs btn-success">Admin</button>}</td>
-            <td><button onClick={() => handleDelete(user._id)} class="btn btn-xs btn-error">Remove user</button></td>
+            <td>{user.role !== 'admin' && <button onClick={handleMakeAdmin} className="btn btn-xs btn-success">Admin</button>}</td>
+            <td><button onClick={() => handleDelete(user._id)} className="btn btn-xs btn-error">Remove user</button></td>
 
 
         </tr>

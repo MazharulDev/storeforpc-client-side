@@ -19,9 +19,9 @@ const MyProfile = () => {
                 <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-5'>Profile</h2>
             </div>
             {/* {user.displayName.substring(0, 1)} */}
-            <div class="avatar flex justify-center mb-5">
-                <div class="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    {photo ? <img src={photo} alt=''/>:<div className='text-6xl h-full text-white bg-primary flex justify-center items-center'>{user.displayName.substring(0, 1)}</div>}
+            <div className="avatar flex justify-center mb-5">
+                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                    {photo ? <img src={photo} alt='' /> : <div className='text-6xl h-full text-white bg-primary flex justify-center items-center'>{user.displayName.substring(0, 1)}</div>}
                 </div>
             </div>
 

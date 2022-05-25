@@ -22,16 +22,16 @@ const Payment = () => {
     const { UserName, name, address, quantity, price } = paymentProcess;
     return (
         <div>
-            <div class="card w-96 bg-base-100 shadow-xl mt-5">
-                <div class="card-body">
-                    <h2 class="card-title mb-8">Hey, <span className='text-primary'>{UserName}</span></h2>
+            <div className="card w-96 bg-base-100 shadow-xl mt-5">
+                <div className="card-body">
+                    <h2 className="card-title mb-8">Hey, <span className='text-primary'>{UserName}</span></h2>
                     <p className='text-lg font-bold'>Your Product is {name}</p>
                     <p>You buying <span className='text-secondary font-bold'>{quantity}</span> pis product.</p>
                     <h3 className='text-xl'>Total price : ${price}</h3>
                 </div>
             </div>
-            <div class="card w-96 bg-base-100 shadow-xl mt-5">
-                <div class="card-body">
+            <div className="card w-96 bg-base-100 shadow-xl mt-5">
+                <div className="card-body">
                     <Elements stripe={stripePromise}>
                         <CheckoutForm paymentProcess={paymentProcess} />
                     </Elements>

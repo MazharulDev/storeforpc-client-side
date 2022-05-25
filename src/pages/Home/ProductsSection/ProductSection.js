@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {MdPriceChange} from 'react-icons/md'
+import { MdPriceChange } from 'react-icons/md'
 
 const ProductSection = ({ product }) => {
     const { _id, name, img, des, minOrder, available, price } = product;
@@ -25,7 +25,7 @@ const ProductSection = ({ product }) => {
                     <p className='text-2xl font-bold my-2'>${price}</p>
                 </div>
                 <Link to={`/purchase/${_id}`} className='w-16'>
-                    <button class="btn btn-block btn-primary">Buy Now</button>
+                    <button className="btn btn-block btn-primary">Buy Now</button>
                 </Link>
             </div>
         </div>
