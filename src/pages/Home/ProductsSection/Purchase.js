@@ -10,6 +10,12 @@ const Purchase = () => {
     const { id } = useParams();
     const [product, setProduct] = useState({});
     const { name, img, price, available, minOrder } = product;
+    const [availableCount, setAvailableCount] = useState(available);
+
+    useEffect(() => {
+        setAvailableCount(available)
+    }, [available])
+
     useEffect(() => {
         fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
@@ -18,43 +24,63 @@ const Purchase = () => {
     if (loading) {
         return <Loading />
     }
-    const handleSubmit=e=>{
+    const handleSubmit = e => {
         e.preventDefault();
-        const UserName=user.displayName;
-        const email=user.email;
-        const address=e.target.address.value;
-        const phone=e.target.phone.value;
-        const quantity=e.target.quantity.value;
-        if(quantity<minOrder||quantity>available){
+        const UserName = user.displayName;
+        const email = user.email;
+        const address = e.target.address.value;
+        const phone = e.target.phone.value;
+        const quantity = e.target.quantity.value;
+        if (quantity < minOrder || quantity > available) {
             return toast.error(`Not less then ${minOrder} and Not More then ${available}`)
         }
-        const totalPrice=price*quantity;
-        const purchase={
-            UserName:UserName,
+
+        let count = parseInt(availableCount) - parseInt(quantity);
+        setAvailableCount(parseInt(availableCount) - parseInt(quantity))
+        const update = { count };
+
+        const url = `http://localhost:5000/product/${id}`
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(update)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+
+
+            })
+
+        const totalPrice = price * quantity;
+        const purchase = {
+            UserName: UserName,
             name,
-            email:email,
-            address:address,
-            phone:phone,
-            quantity:parseInt(quantity),
-            price:totalPrice
+            email: email,
+            address: address,
+            phone: phone,
+            quantity: parseInt(quantity),
+            price: totalPrice
         }
-        fetch('http://localhost:5000/purchase',{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+        fetch('http://localhost:5000/purchase', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
             body: JSON.stringify(purchase)
         })
-        .then(res=>res.json())
-        .then(data=>{
-            if(data.acknowledged){
-                toast.success(`Purchase successfully`)
-                e.target.address.value='';
-                e.target.phone.value='';
-                e.target.quantity.value=''
-            }
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success(`Purchase successfully`)
+                    e.target.address.value = '';
+                    e.target.phone.value = '';
+                    e.target.quantity.value = ''
+                }
 
-        })
+            })
     }
     return (
         <div className='md:grid grid-flow-col px-12 mt-10'>
@@ -68,7 +94,7 @@ const Purchase = () => {
                         <h3>Order quantity: {minOrder}</h3>
                         <h3>Price : ${price}</h3>
                     </div>
-                    <h2>Available Quantity: {available}</h2>
+                    <h2>Available Quantity: {availableCount}</h2>
                 </div>
             </div>
             <div className='grid-span-1 mx-auto'>
@@ -76,9 +102,9 @@ const Purchase = () => {
                 <form onSubmit={handleSubmit}>
                     <input className='border rounded-md p-2 mt-5' disabled type="name" name="name" value={user?.displayName} /> <br />
                     <input className='border rounded-md p-2 mt-5' disabled type="email" name="email" value={user?.email} /> <br />
-                    <textarea className='border rounded-md mt-5 px-6 py-4' type="text-area" name="address" placeholder='Type your address' required/><br />
-                    <input className='border rounded-md mt-5 p-2' type="number" name="phone" placeholder='Type your phone number' required/><br />
-                    <input className='mt-5 p-2 w-28 border mr-4 rounded-md' type="number" name="quantity" placeholder='Quantity' required/>
+                    <textarea className='border rounded-md mt-5 px-6 py-4' type="text-area" name="address" placeholder='Type your address' required /><br />
+                    <input className='border rounded-md mt-5 p-2' type="number" name="phone" placeholder='Type your phone number' required /><br />
+                    <input className='mt-5 p-2 w-28 border mr-4 rounded-md' type="number" name="quantity" placeholder='Quantity' required />
                     <input className='btn btn-primary btn-block mt-5' type='submit' value="purchase" />
                 </form>
             </div>

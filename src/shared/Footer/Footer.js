@@ -9,7 +9,7 @@ const Footer = () => {
         <>
             <div className='bg-slate-800 text-white p-5'>
                 <h2 className='text-3xl text-center'>StoreForPc</h2>
-                <p className='text-center my-4'>Lorem Ipsum Dolor Sit Ameur Adipiscing Elit, Sed Do Eiusmodmpor Dolore Magna Aliqua</p>
+                <p className='text-center my-4'>If you need computer parts, you can easily take them</p>
                 <div className='flex justify-center gap-4'>
                     <a href="https://web.facebook.com/miforbd"><BsFacebook className='text-2xl'></BsFacebook></a>
                     <a href="https://web.facebook.com/miforbd"><BsTwitter className='text-2xl'></BsTwitter></a>

@@ -12,7 +12,7 @@ const Dashboard = () => {
     return (
         <>
             <div className="drawer drawer-mobile bg-slate-200">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex justify-center">
 
                     <Outlet />
@@ -20,7 +20,7 @@ const Dashboard = () => {
 
                 </div>
                 <div className="drawer-side">
-                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                    <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 overflow-y-auto w-64 bg-base-100 text-base-content">
 
                         <li><Link to='/dashboard'>My Profile</Link></li>
