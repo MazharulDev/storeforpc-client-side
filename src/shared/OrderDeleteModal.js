@@ -8,7 +8,10 @@ const OrderDeleteModal = ({ order, refetch, setDeleteOrder }) => {
 
         const url = `https://storeforpc.herokuapp.com/purchase/${id}`
         fetch(url, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {

@@ -44,7 +44,10 @@ const Purchase = () => {
         fetch(url, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
             },
             body: JSON.stringify(update)
         })
@@ -68,7 +71,10 @@ const Purchase = () => {
         fetch('https://storeforpc.herokuapp.com/purchase', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
             },
             body: JSON.stringify(purchase)
         })

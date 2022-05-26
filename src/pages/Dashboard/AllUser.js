@@ -18,7 +18,10 @@ const AllUser = () => {
         if (proceed) {
             const url = `https://storeforpc.herokuapp.com/user/${id}`
             fetch(url, {
-                method: 'DELETE'
+                method: 'DELETE',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
             })
                 .then(res => res.json())
                 .then(data => {

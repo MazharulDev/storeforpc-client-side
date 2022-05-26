@@ -8,7 +8,10 @@ const useToken = user => {
             fetch(`https://storeforpc.herokuapp.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    headers: {
+                        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    }
                 },
                 body: JSON.stringify(currentUser)
 

@@ -13,7 +13,10 @@ const ContactSection = () => {
         fetch('https://storeforpc.herokuapp.com/userContact', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                }
             },
             body: JSON.stringify(email)
         })
