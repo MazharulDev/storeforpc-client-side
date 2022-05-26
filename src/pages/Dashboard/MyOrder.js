@@ -23,9 +23,11 @@ const MyOrder = () => {
     }
     return (
         <div>
-            <h2>My Order</h2>
+            <div className='flex justify-center'>
+                <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-5'>My Order</h2>
+            </div>
             <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table table-compact w-full">
                     <thead>
                         <tr>
                             <th></th>

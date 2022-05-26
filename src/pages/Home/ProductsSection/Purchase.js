@@ -91,6 +91,9 @@ const Purchase = () => {
     }
     return (
         <>
+            <div className='flex justify-center'>
+                <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-5'>Purchase Process</h2>
+            </div>
             <div className='md:grid grid-flow-col px-12 my-10'>
                 <div className='flex items-center gap-5 col-span-2 mx-auto'>
                     <div className='flex items-center'>

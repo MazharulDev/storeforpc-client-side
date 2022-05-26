@@ -10,6 +10,7 @@ import MyOrder from './pages/Dashboard/MyOrder';
 import MyProfile from './pages/Dashboard/MyProfile';
 import MyReview from './pages/Dashboard/MyReview';
 import Payment from './pages/Dashboard/Payment';
+import UpdateProfile from './pages/Dashboard/UpdateProfile';
 import Home from './pages/Home/Home';
 import Navbar from './pages/Home/Navbar/Navbar';
 import Purchase from './pages/Home/ProductsSection/Purchase';
@@ -52,6 +53,7 @@ function App() {
         <Route path='/myportfolio' element={<MyPortfolio />}></Route>
         <Route path='/blogs' element={<Blogs />}></Route>
         <Route path='/showallproduct' element={<ShowAllProduct />}></Route>
+        <Route path='updateProfile/:id' element={<UpdateProfile />}></Route>
 
 
         <Route path='*' element={<NotFound />}></Route>

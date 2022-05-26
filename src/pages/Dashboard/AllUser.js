@@ -23,7 +23,9 @@ const AllUser = () => {
     }
     return (
         <div>
-            <h2 className='text-2xl mt-5 font-bold'>User:{users.length}</h2>
+            <div className='flex justify-center'>
+                <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-5'>User Management</h2>
+            </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

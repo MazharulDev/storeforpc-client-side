@@ -33,8 +33,7 @@ const UserDeleteModal = ({ user, refetch, setUserDelete }) => {
             <input type="checkbox" id="UserDeleteModal" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Are you sure you want to delete {email}</h3>
-                    <p className="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                    <h3 className="font-bold text-lg text-red-500">Are you sure you want to delete {email}</h3>
                     <div className="modal-action">
                         <button className='btn btn-xs btn-error' onClick={() => handleDelete(_id)}>Yes</button>
                         <label htmlFor="UserDeleteModal" className="btn btn-xs">NO</label>

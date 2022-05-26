@@ -4,12 +4,18 @@ import auth from '../../firebase.init';
 import { BsPersonCircle } from 'react-icons/bs'
 import { MdOutlineMailOutline } from 'react-icons/md'
 import Loading from '../../shared/Loading/Loading';
+import { Link } from 'react-router-dom';
+import { useQuery } from 'react-query';
 
 
 
 const MyProfile = () => {
     const [user, loading] = useAuthState(auth);
-    if (loading) {
+    const { data: userInfo, isLoading, refetch } = useQuery('userInfo', () => fetch(`https://storeforpc.herokuapp.com/userProfile?email=${user.email}`, {
+        method: 'GET',
+    })
+        .then(res => res.json()))
+    if (loading || isLoading) {
         return <Loading />
     }
     const photo = user.reloadUserInfo.photoUrl;
@@ -33,6 +39,27 @@ const MyProfile = () => {
             <div className='flex items-center gap-3'>
                 <MdOutlineMailOutline className='text-lg'></MdOutlineMailOutline>
                 <h2>{user.email}</h2>
+            </div>
+            {
+                userInfo.map(userIn =>
+                    <div key={userIn._id}>
+                        <div>
+                            <h2>Address: {userIn.location}</h2>
+                        </div>
+                        <div>
+                            <h2>Gender: {userIn.gender}</h2>
+                        </div>
+                        <div >
+                            <h2>Phone Number: {userIn.phone}</h2>
+                        </div>
+                        <div>
+                            <h2>LinkedIn Profile: {userIn.linkedIn}</h2>
+                        </div>
+                    </div>
+                )
+            }
+            <div className='flex justify-center'>
+                <Link to={`/updateProfile/${user.email}`} className='btn btn-outline btn-primary mt-5 mx-auto'>Update Profile</Link>
             </div>
         </div>
     );
