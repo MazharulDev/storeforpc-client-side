@@ -9,7 +9,7 @@ const Banner = () => {
                 <div>
                     <h1 className="text-5xl font-bold">Build Your own Pc</h1>
                     <p className="py-6">Find the best parts for your pc. Make the old PC the head of the new power. A new part is able to speed up the computer. If any parts of your computer are damaged, here is the solution.</p>
-                    <button className="btn btn-primary">Explore</button>
+                    <a href='#visit' className='inline-block px-14 mt-10 transition-all py-3 rounded-md text-white hover:scale-110 border-2 duration-300 border-blue-600 hover:bg-transparent hover:text-blue-500 bg-blue-600 uppercase'>Explore</a>
                 </div>
             </div>
         </div>
