@@ -31,6 +31,9 @@ const Login = () => {
             navigate(from, { replace: true });
         }
     }, [navigate, userToken, from])
+    if (userWithGoogle || userWithEmail) {
+        toast('Login successfully')
+    }
     if (errorWithGoogle) {
         toast.error(errorWithGoogle?.message)
     }

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../shared/Loading/Loading';
+import OrderDeleteModal from '../../shared/OrderDeleteModal';
 
 const MyOrder = () => {
+    const [deleteOrder, setDeleteOrder] = useState(null)
     const [user, loading] = useAuthState(auth);
     const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/purchase?email=${user.email}`, {
         method: 'GET',
@@ -15,20 +17,7 @@ const MyOrder = () => {
         }
     })
         .then(res => res.json()))
-    const handleDelete = id => {
-        const proceed = window.confirm('Are you sure you want to cancel Order?')
-        if (proceed) {
-            const url = `http://localhost:5000/purchase/${id}`
-            fetch(url, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    refetch()
-                    toast.success('Order canceled successfully')
-                })
-        }
-    }
+
     if (loading || isLoading) {
         return <Loading />
     }
@@ -57,7 +46,8 @@ const MyOrder = () => {
                                     <td>{order.address}</td>
                                     <td>{order.quantity}</td>
                                     <td>${order.price}</td>
-                                    <td><button onClick={() => handleDelete(order._id)} disabled={order.transactionId} className="btn btn-xs btn-error">Cancel</button></td>
+                                    <td><label onClick={() => setDeleteOrder(order)} for="OrderDeleteModal" disabled={order.transactionId} className="btn btn-xs btn-error">Cancel</label>
+                                    </td>
                                     <td>
                                         {!order.paid && <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-xs btn-success">Pay</button></Link>}
                                         {order.paid && <>
@@ -88,6 +78,7 @@ const MyOrder = () => {
                     </tbody>
                 </table>
             </div>
+            {deleteOrder && <OrderDeleteModal order={deleteOrder} refetch={refetch} setDeleteOrder={setDeleteOrder} />}
         </div >
     );
 };

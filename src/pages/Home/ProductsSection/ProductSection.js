@@ -5,7 +5,7 @@ import { MdPriceChange } from 'react-icons/md'
 const ProductSection = ({ product }) => {
     const { _id, name, img, des, minOrder, available, price } = product;
     return (
-        <div className='shadow hover:shadow-xl rounded-md bg-white mb-4 md:mb-0 box-border overflow-hidden '>
+        <div className='shadow hover:shadow-xl rounded-md bg-white mb-4 md:mb-0 box-border overflow-hidden border'>
             <div className='box-border h-56 overflow-hidden cursor-pointer'>
                 <img className=' hover:scale-105 duration-300 h-full w-full' src={img} alt="" />
             </div>
