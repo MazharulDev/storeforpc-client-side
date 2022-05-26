@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 import Loading from '../../shared/Loading/Loading';
+import UserDeleteModal from '../../shared/UserDeleteModal';
 import User from './User';
 
 const AllUser = () => {
+    const [userDelete, setUserDelete] = useState(null)
     const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://storeforpc.herokuapp.com/user', {
         method: 'GET',
         headers: {
@@ -13,26 +15,7 @@ const AllUser = () => {
     })
         .then(res => res.json()));
 
-    const handleDelete = id => {
-        const proceed = window.confirm('Are you sure you want to delete user??')
-        if (proceed) {
-            const url = `https://storeforpc.herokuapp.com/user/${id}`
-            fetch(url, {
-                method: 'DELETE',
-                headers: {
-                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    refetch();
-                    if (data.acknowledged === true) {
 
-                        toast.success('User delete successfully')
-                    }
-                })
-        }
-    }
 
 
     if (isLoading) {
@@ -55,12 +38,13 @@ const AllUser = () => {
                     <tbody>
                         {
                             users.map((user, index) =>
-                                <User key={index} index={index} user={user} handleDelete={handleDelete} refetch={refetch} />
+                                <User key={index} setUserDelete={setUserDelete} index={index} user={user} refetch={refetch} />
                             )
                         }
                     </tbody>
                 </table>
             </div>
+            {userDelete && <UserDeleteModal user={userDelete} refetch={refetch} setUserDelete={setUserDelete} />}
         </div>
     );
 };

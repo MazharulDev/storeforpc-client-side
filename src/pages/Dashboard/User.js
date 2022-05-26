@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const User = ({ user, index, handleDelete, refetch }) => {
+const User = ({ user, index, refetch, setUserDelete }) => {
     const handleMakeAdmin = () => {
         fetch(`https://storeforpc.herokuapp.com/user/admin/${user?.email}`, {
             method: 'PUT',
@@ -29,7 +29,8 @@ const User = ({ user, index, handleDelete, refetch }) => {
             <th>{index + 1}</th>
             <td>{user.email}</td>
             <td>{user.role !== 'admin' && <button onClick={handleMakeAdmin} className="btn btn-xs btn-success">Admin</button>}</td>
-            <td><button onClick={() => handleDelete(user._id)} className="btn btn-xs btn-error">Remove user</button></td>
+            <td><label onClick={() => setUserDelete(user)} htmlFor="UserDeleteModal" className="btn btn-xs btn-error">Remove user</label></td>
+
 
 
         </tr>
