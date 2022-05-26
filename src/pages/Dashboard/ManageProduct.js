@@ -6,7 +6,7 @@ import Loading from '../../shared/Loading/Loading';
 
 const ManageProduct = () => {
     const [deleteProduct, setDeleteProduct] = useState(null)
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('http://localhost:5000/product', {
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('https://storeforpc.herokuapp.com/product', {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -20,8 +20,8 @@ const ManageProduct = () => {
     }
     return (
         <div>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
@@ -45,7 +45,7 @@ const ManageProduct = () => {
                                 <td>{product.available}</td>
                                 <td>{product.price}</td>
                                 <td>
-                                    <label onClick={() => setDeleteProduct(product)} for="productDelete" class="btn btn-xs btn-error">Delete</label>
+                                    <label onClick={() => setDeleteProduct(product)} htmlFor="productDelete" className="btn btn-xs btn-error">Delete</label>
                                 </td>
 
 

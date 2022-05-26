@@ -5,7 +5,7 @@ import PerProduct from './PerProduct';
 const ShowAllProduct = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/product', {
+        fetch('https://storeforpc.herokuapp.com/product', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

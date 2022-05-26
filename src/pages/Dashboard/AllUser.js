@@ -5,7 +5,7 @@ import Loading from '../../shared/Loading/Loading';
 import User from './User';
 
 const AllUser = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://storeforpc.herokuapp.com/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -16,7 +16,7 @@ const AllUser = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete user??')
         if (proceed) {
-            const url = `http://localhost:5000/user/${id}`
+            const url = `https://storeforpc.herokuapp.com/user/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
@@ -52,7 +52,7 @@ const AllUser = () => {
                     <tbody>
                         {
                             users.map((user, index) =>
-                                <User index={index} user={user} handleDelete={handleDelete} refetch={refetch} />
+                                <User key={index} index={index} user={user} handleDelete={handleDelete} refetch={refetch} />
                             )
                         }
                     </tbody>

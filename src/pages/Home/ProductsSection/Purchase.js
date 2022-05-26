@@ -18,7 +18,7 @@ const Purchase = () => {
     }, [available])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${id}`)
+        fetch(`https://storeforpc.herokuapp.com/product/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
@@ -40,7 +40,7 @@ const Purchase = () => {
         setAvailableCount(parseInt(availableCount) - parseInt(quantity))
         const update = { count };
 
-        const url = `http://localhost:5000/product/${id}`
+        const url = `https://storeforpc.herokuapp.com/product/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -65,7 +65,7 @@ const Purchase = () => {
             quantity: parseInt(quantity),
             price: totalPrice
         }
-        fetch('http://localhost:5000/purchase', {
+        fetch('https://storeforpc.herokuapp.com/purchase', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

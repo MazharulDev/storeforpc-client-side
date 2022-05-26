@@ -17,7 +17,7 @@ const MyReview = () => {
         }
         console.log(review);
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://storeforpc.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

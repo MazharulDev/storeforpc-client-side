@@ -4,7 +4,7 @@ import ReviewsAll from './ReviewsAll';
 const AllReviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://storeforpc.herokuapp.com/review')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

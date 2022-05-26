@@ -10,7 +10,7 @@ const CheckoutForm = ({ paymentProcess }) => {
     const [transactionId, setTransactionId] = useState('')
     const { _id, UserName, email, price } = paymentProcess;
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://storeforpc.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -70,7 +70,7 @@ const CheckoutForm = ({ paymentProcess }) => {
             }
 
             //update pain information
-            fetch(`http://localhost:5000/purchase/${_id}`, {
+            fetch(`https://storeforpc.herokuapp.com/purchase/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

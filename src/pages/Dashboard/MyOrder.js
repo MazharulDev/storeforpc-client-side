@@ -10,7 +10,7 @@ import OrderDeleteModal from '../../shared/OrderDeleteModal';
 const MyOrder = () => {
     const [deleteOrder, setDeleteOrder] = useState(null)
     const [user, loading] = useAuthState(auth);
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`http://localhost:5000/purchase?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://storeforpc.herokuapp.com/purchase?email=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -46,7 +46,7 @@ const MyOrder = () => {
                                     <td>{order.address}</td>
                                     <td>{order.quantity}</td>
                                     <td>${order.price}</td>
-                                    <td><label onClick={() => setDeleteOrder(order)} for="OrderDeleteModal" disabled={order.transactionId} className="btn btn-xs btn-error">Cancel</label>
+                                    <td><label onClick={() => setDeleteOrder(order)} htmlFor="OrderDeleteModal" disabled={order.transactionId} className="btn btn-xs btn-error">Cancel</label>
                                     </td>
                                     <td>
                                         {!order.paid && <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-xs btn-success">Pay</button></Link>}
