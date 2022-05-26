@@ -27,15 +27,15 @@ const MyOrder = () => {
                 <h2 className='text-center text-4xl py-5 inline-block border-b-4 border-blue-400 font-bold mb-5'>My Order</h2>
             </div>
             <div className="overflow-x-auto">
-                <table className="table table-compact w-full">
+                <table className="table table-compact md:w-full">
                     <thead>
                         <tr>
                             <th></th>
                             <th>Product Name</th>
                             <th>Address</th>
-                            <th>Order Quantity</th>
+                            <th>Quantity</th>
                             <th>Total Price</th>
-                            <th>Order Cancel</th>
+                            <th>Action</th>
                             <th>Payment Status</th>
                         </tr>
                     </thead>
@@ -44,7 +44,7 @@ const MyOrder = () => {
                             orders.map((order, index) =>
                                 <tr key={index}>
                                     <th>{index + 1}</th>
-                                    <td>{order.name}</td>
+                                    <td>{order.name.slice(0, 16)}</td>
                                     <td>{order.address}</td>
                                     <td>{order.quantity}</td>
                                     <td>${order.price}</td>

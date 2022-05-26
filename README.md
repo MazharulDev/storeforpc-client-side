@@ -4,9 +4,8 @@ Click browse my Website [StoreForPc](https://storeforpc.web.app/).
 
 >The steps to create a website
 >> - Navbar create on Header components 
->> - Home page added Header i mean navbar, banner show up website,Car Collection,Choose section , NewsLetter section and footer
->> - Six Car collection in home page 
->> - Inventory page added All items
+>> - Home page added Header i mean navbar, banner show up website,product Collection,Choose section , NewsLetter section and footer
+>> - Six product collection in home page 
 >> - Blog page added Question and answer 
 >> - New item added in add Items page
 >> - Item manage delete and update in manage items page
@@ -24,4 +23,4 @@ Click browse my Website [StoreForPc](https://storeforpc.web.app/).
 >> - Tailwind
 >> - React toastify
 >> - React firebase hooks
->> - React
+>> - daisyui
