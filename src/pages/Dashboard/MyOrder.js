@@ -44,7 +44,7 @@ const MyOrder = () => {
                             orders.map((order, index) =>
                                 <tr key={index}>
                                     <th>{index + 1}</th>
-                                    <td>{order.name.slice(0, 16)}</td>
+                                    <td>{order.name.slice(0, 16)}...</td>
                                     <td>{order.address}</td>
                                     <td>{order.quantity}</td>
                                     <td>${order.price}</td>
