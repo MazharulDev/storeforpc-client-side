@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Loading from '../../../shared/Loading/Loading';
@@ -12,7 +12,7 @@ const Navbar = () => {
         signOut(auth)
         toast('Sign Out')
     }
-    const { pathname } = useLocation();
+
     const items = <>
         <li><Link to='/'>Home</Link></li>
         {
@@ -45,9 +45,7 @@ const Navbar = () => {
                     {items}
                 </ul>
             </div>
-            {pathname.includes("dashboard") && <label htmlFor="dashboard-drawer" className="btn btn-ghost drawer-button lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-            </label>}
+
         </div>
     );
 };
