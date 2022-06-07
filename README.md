@@ -14,6 +14,8 @@ Click browse my Website [StoreForPc](https://storeforpc.web.app/).
 >> - If New account created user email varificaion sent
 >> - Login Sign out notification showed fancy toast 
 >> - All data stored in mongoDB database
+>> - Payment gateway has been added
+
 
 
 ## External frameworks libraries used in this project
