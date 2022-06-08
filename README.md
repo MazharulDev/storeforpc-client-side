@@ -16,6 +16,9 @@ Click browse my Website [StoreForPc](https://storeforpc.web.app/).
 >> - All data stored in mongoDB database
 >> - Payment gateway has been added
 
+>Admin Access
+>> - User:miforbd@gmail.com
+>> - password: miforbd
 
 
 ## External frameworks libraries used in this project
