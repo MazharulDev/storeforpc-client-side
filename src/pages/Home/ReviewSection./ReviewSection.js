@@ -5,7 +5,7 @@ import ReviewSectionOne from './ReviewSectionOne';
 const ReviewSection = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('https://storeforpc.herokuapp.com/review')
+        fetch('https://storeforpc.up.railway.app/review')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

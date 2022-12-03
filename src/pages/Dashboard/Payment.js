@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L2rYBBa8YQutSyvJWES9011rNLD7yBYm4aGC
 
 const Payment = () => {
     const { id } = useParams();
-    const { data: paymentProcess, isLoading } = useQuery(['purchase', id], () => fetch(`https://storeforpc.herokuapp.com/purchase/${id}`, {
+    const { data: paymentProcess, isLoading } = useQuery(['purchase', id], () => fetch(`https://storeforpc.up.railway.app/purchase/${id}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

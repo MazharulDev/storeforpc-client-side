@@ -5,7 +5,7 @@ import ProductSection from './ProductSection';
 const ProductsSection = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('https://storeforpc.herokuapp.com/product', {
+        fetch('https://storeforpc.up.railway.app/product', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

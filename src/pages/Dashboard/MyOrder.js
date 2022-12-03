@@ -10,7 +10,7 @@ import OrderDeleteModal from '../../shared/OrderDeleteModal';
 const MyOrder = () => {
     const [deleteOrder, setDeleteOrder] = useState(null)
     const [user, loading] = useAuthState(auth);
-    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://storeforpc.herokuapp.com/purchase?email=${user.email}`, {
+    const { data: orders, isLoading, refetch } = useQuery('orders', () => fetch(`https://storeforpc.up.railway.app/purchase?email=${user.email}`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

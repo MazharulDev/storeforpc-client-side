@@ -31,7 +31,7 @@ const AddProduct = () => {
                     img: img
                 }
                 //send database
-                fetch('https://storeforpc.herokuapp.com/product', {
+                fetch('https://storeforpc.up.railway.app/product', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

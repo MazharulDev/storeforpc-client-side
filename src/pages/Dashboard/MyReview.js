@@ -17,7 +17,7 @@ const MyReview = () => {
         }
         console.log(review);
 
-        fetch('https://storeforpc.herokuapp.com/review', {
+        fetch('https://storeforpc.up.railway.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

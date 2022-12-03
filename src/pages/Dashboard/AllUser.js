@@ -7,7 +7,7 @@ import User from './User';
 
 const AllUser = () => {
     const [userDelete, setUserDelete] = useState(null)
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://storeforpc.herokuapp.com/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://storeforpc.up.railway.app/user', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

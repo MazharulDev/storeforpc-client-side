@@ -6,7 +6,7 @@ const UserDeleteModal = ({ user, refetch, setUserDelete }) => {
     const handleDelete = id => {
 
 
-        const url = `https://storeforpc.herokuapp.com/user/${id}`
+        const url = `https://storeforpc.up.railway.app/user/${id}`
         fetch(url, {
             method: 'DELETE',
             headers: {

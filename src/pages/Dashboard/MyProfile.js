@@ -11,7 +11,7 @@ import { useQuery } from 'react-query';
 
 const MyProfile = () => {
     const [user, loading] = useAuthState(auth);
-    const { data: userInfo, isLoading, refetch } = useQuery('userInfo', () => fetch(`https://storeforpc.herokuapp.com/userProfile?email=${user.email}`, {
+    const { data: userInfo, isLoading, refetch } = useQuery('userInfo', () => fetch(`https://storeforpc.up.railway.app/userProfile?email=${user.email}`, {
         method: 'GET',
     })
         .then(res => res.json()))

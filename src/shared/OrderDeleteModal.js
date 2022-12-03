@@ -6,7 +6,7 @@ const OrderDeleteModal = ({ order, refetch, setDeleteOrder }) => {
     const handleDelete = id => {
 
 
-        const url = `https://storeforpc.herokuapp.com/purchase/${id}`
+        const url = `https://storeforpc.up.railway.app/purchase/${id}`
         fetch(url, {
             method: 'DELETE',
             headers: {

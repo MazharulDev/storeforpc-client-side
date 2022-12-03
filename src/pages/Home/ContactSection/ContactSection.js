@@ -10,7 +10,7 @@ const ContactSection = () => {
             email: inputEmail
         }
         //send database
-        fetch('https://storeforpc.herokuapp.com/userContact', {
+        fetch('https://storeforpc.up.railway.app/userContact', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -13,7 +13,7 @@ const UpdateProfile = () => {
             phone: data.phone,
             linkedIn: data.linkedIn
         }
-        fetch(`https://storeforpc.herokuapp.com/userProfile/${id}`, {
+        fetch(`https://storeforpc.up.railway.app/userProfile/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
