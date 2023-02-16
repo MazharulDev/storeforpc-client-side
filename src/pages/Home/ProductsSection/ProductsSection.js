@@ -8,7 +8,7 @@ const ProductsSection = () => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true)
-        fetch('https://storeforpc.up.railway.app/product', {
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/product`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

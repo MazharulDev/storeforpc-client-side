@@ -10,7 +10,7 @@ const ContactSection = () => {
             email: inputEmail
         }
         //send database
-        fetch('https://storeforpc.up.railway.app/userContact', {
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/userContact`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

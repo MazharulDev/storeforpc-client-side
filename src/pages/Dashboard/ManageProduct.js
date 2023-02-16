@@ -6,7 +6,7 @@ import Loading from '../../shared/Loading/Loading';
 
 const ManageProduct = () => {
     const [deleteProduct, setDeleteProduct] = useState(null)
-    const { data: products, isLoading, refetch } = useQuery('products', () => fetch('https://storeforpc.up.railway.app/product', {
+    const { data: products, isLoading, refetch } = useQuery('products', () => fetch(`${process.env.REACT_APP_SERVER_LINK}/product`, {
         method: 'GET',
         headers: {
             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

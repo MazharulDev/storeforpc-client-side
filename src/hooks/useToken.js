@@ -5,7 +5,7 @@ const useToken = user => {
         const email = user?.user?.email
         const currentUser = { email: email }
         if (email) {
-            fetch(`https://storeforpc.up.railway.app/user/${email}`, {
+            fetch(`${process.env.REACT_APP_SERVER_LINK}/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json',

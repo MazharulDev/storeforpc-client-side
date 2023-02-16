@@ -18,7 +18,7 @@ const Purchase = () => {
     }, [available])
 
     useEffect(() => {
-        fetch(`https://storeforpc.up.railway.app/product/${id}`)
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/product/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
@@ -40,7 +40,7 @@ const Purchase = () => {
         setAvailableCount(parseInt(availableCount) - parseInt(quantity))
         const update = { count };
 
-        const url = `https://storeforpc.up.railway.app/product/${id}`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/product/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -68,7 +68,7 @@ const Purchase = () => {
             quantity: parseInt(quantity),
             price: totalPrice
         }
-        fetch('https://storeforpc.up.railway.app/purchase', {
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/purchase`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

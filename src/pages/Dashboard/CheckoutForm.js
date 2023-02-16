@@ -10,7 +10,7 @@ const CheckoutForm = ({ paymentProcess }) => {
     const [transactionId, setTransactionId] = useState('')
     const { _id, UserName, email, price } = paymentProcess;
     useEffect(() => {
-        fetch('https://storeforpc.up.railway.app/create-payment-intent', {
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -70,7 +70,7 @@ const CheckoutForm = ({ paymentProcess }) => {
             }
 
             //update pain information
-            fetch(`https://storeforpc.up.railway.app/purchase/${_id}`, {
+            fetch(`${process.env.REACT_APP_SERVER_LINK}/purchase/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

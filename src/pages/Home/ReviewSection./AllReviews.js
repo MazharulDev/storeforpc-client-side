@@ -4,7 +4,7 @@ import ReviewsAll from './ReviewsAll';
 const AllReviews = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('https://storeforpc.up.railway.app/review')
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/review`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])

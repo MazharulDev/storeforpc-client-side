@@ -13,7 +13,7 @@ const UpdateProfile = () => {
             phone: data.phone,
             linkedIn: data.linkedIn
         }
-        fetch(`https://storeforpc.up.railway.app/userProfile/${id}`, {
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/userProfile/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

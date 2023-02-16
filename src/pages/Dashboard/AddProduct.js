@@ -31,7 +31,7 @@ const AddProduct = () => {
                     img: img
                 }
                 //send database
-                fetch('https://storeforpc.up.railway.app/product', {
+                fetch(`${process.env.REACT_APP_SERVER_LINK}/product`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

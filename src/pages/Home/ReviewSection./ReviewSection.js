@@ -8,7 +8,7 @@ const ReviewSection = () => {
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         setLoading(true)
-        fetch('https://storeforpc.up.railway.app/review')
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/review`)
             .then(res => res.json())
             .then(data => {
                 setLoading(false)

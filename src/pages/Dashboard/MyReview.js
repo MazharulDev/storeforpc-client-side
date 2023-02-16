@@ -17,7 +17,7 @@ const MyReview = () => {
         }
         console.log(review);
 
-        fetch('https://storeforpc.up.railway.app/review', {
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/review`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

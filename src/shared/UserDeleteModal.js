@@ -6,7 +6,7 @@ const UserDeleteModal = ({ user, refetch, setUserDelete }) => {
     const handleDelete = id => {
 
 
-        const url = `https://storeforpc.up.railway.app/user/${id}`
+        const url = `${process.env.REACT_APP_SERVER_LINK}/user/${id}`
         fetch(url, {
             method: 'DELETE',
             headers: {

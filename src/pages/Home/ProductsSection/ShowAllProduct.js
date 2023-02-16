@@ -5,7 +5,7 @@ import PerProduct from './PerProduct';
 const ShowAllProduct = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('https://storeforpc.up.railway.app/product', {
+        fetch(`${process.env.REACT_APP_SERVER_LINK}/product`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
